@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Review</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Submit Your Review</h1>
+    <form action="/" method="POST">
+        <textarea name="review" rows="5" cols="50" placeholder="Write your review here..." required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="/dashboard">Go to Admin Dashboard</a>
+</body>
+</html>

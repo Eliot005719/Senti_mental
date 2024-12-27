@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Review</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.id }}</td>
+            <td>{{ review.content }}</td>
+            <td>{{ review.status }}</td>
+            <td>
+                {% if review.status == "Pending" %}
+                <a href="/accept/{{ review.id }}">Accept</a> |
+                <a href="/reject/{{ review.id }}">Reject</a>
+                {% elif review.status == "Accepted" %}
+                <a href="/analysis/{{ review.id }}">View Analysis</a>
+                {% else %}
+                Rejected
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Go to Homepage</a>
+</body>
+</html>
